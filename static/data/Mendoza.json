@@ -1,0 +1,18 @@
+{
+    "nombre": "Mendoza",
+
+    "eventos": [
+        "Fiesta de la Vendimia",
+        "Festival del Malbec"
+    ],
+
+    "gastronomia": [
+        "Asado",
+        "Vinos mendocinos"
+    ],
+
+    "turismo": [
+        "Aconcagua",
+        "Puente del Inca"
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "nombre": "Cordoba",
+
+    "eventos": [
+
+        {
+            "nombre": "Cosquín Rock",
+            "fecha": "15 Febrero",
+            "lugar": "Aeródromo Santa María de Punilla",
+            "imagen": "cosquin.jpg"
+        },
+
+        {
+            "nombre": "Festival Nacional de Folklore",
+            "fecha": "20 Enero",
+            "lugar": "Cosquín",
+            "imagen": "folklore.jpg"
+        },
+
+        {
+            "nombre": "Evento Gamer Córdoba",
+            "fecha": "5 Marzo",
+            "lugar": "Centro de Convenciones",
+            "imagen": "gamer.jpg"
+        }
+
+    ],
+
+    "gastronomia": [
+        "Fernet con coca",
+        "Choripán",
+        "Empanadas cordobesas"
+    ],
+
+    "turismo": [
+        "Villa Carlos Paz",
+        "La Cumbrecita",
+        "Capilla del Monte"
+    ]
+}
