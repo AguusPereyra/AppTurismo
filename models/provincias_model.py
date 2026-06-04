@@ -84,3 +84,19 @@ def obtener_turismo_por_provincia(provincia_id):
         turismo.append(lugar[0])
 
     return turismo
+
+def obtener_info_provincia(provincia_id):
+
+    cursor.execute("""
+    SELECT
+        descripcion,
+        capital,
+        poblacion,
+        superficie,
+        region,
+        dato_curioso
+    FROM informacion_provincia
+    WHERE provincia_id = ?
+    """, (provincia_id,))
+
+    return cursor.fetchone()

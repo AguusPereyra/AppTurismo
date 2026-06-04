@@ -4,7 +4,8 @@ from models.provincias_model import (
     obtener_provincia_por_nombre,
     obtener_eventos_por_provincia,
     obtener_gastronomia_por_provincia,
-    obtener_turismo_por_provincia
+    obtener_turismo_por_provincia,
+    obtener_info_provincia
 )
 
 provincias_bp = Blueprint(
@@ -39,8 +40,13 @@ def obtener_provincia(nombre):
                 provincia[0]
             )
 
+            informacion = obtener_info_provincia(
+                provincia[0]
+            )
+
             return jsonify({
                 "nombre": provincia[1],
+                "informacion": informacion,
                 "eventos": eventos,
                 "gastronomia": gastronomia,
                 "turismo": turismo

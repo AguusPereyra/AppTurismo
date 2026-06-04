@@ -38,6 +38,20 @@ CREATE TABLE IF NOT EXISTS turismo(
 conexion.commit()
 
 cursor.execute("""
+CREATE TABLE IF NOT EXISTS informacion_provincia(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    provincia_id INTEGER,
+    descripcion TEXT,
+    capital TEXT,
+    poblacion TEXT,
+    superficie TEXT,
+    region TEXT,
+    dato_curioso TEXT
+)
+""")
+conexion.commit()
+
+cursor.execute("""
 SELECT * FROM provincias
 WHERE nombre = ?
 """, ("Cordoba",))
@@ -109,6 +123,38 @@ if not turismo_existente:
     """)
     conexion.commit()
 
+cursor.execute("""
+SELECT * FROM informacion_provincia
+WHERE provincia_id = ?
+""", (1,))
+
+info_existente = cursor.fetchone()
+
+if not info_existente:
+
+    cursor.execute("""
+    INSERT INTO informacion_provincia(
+        provincia_id,
+        descripcion,
+        capital,
+        poblacion,
+        superficie,
+        region,
+        dato_curioso
+    )
+    VALUES(
+        1,
+        'Córdoba es una de las provincias más importantes de Argentina, reconocida por sus sierras, su historia y su vida universitaria.',
+        'Córdoba',
+        '3.978.984 habitantes',
+        '165.321 km²',
+        'Región Centro',
+        'La Universidad Nacional de Córdoba fue fundada en 1613 y es una de las más antiguas de América.'
+    )
+    """)
+
+    conexion.commit()
+
 cursor.execute("SELECT * FROM turismo")
 print(cursor.fetchall())
 
@@ -122,3 +168,8 @@ print(resultado_eventos)
 cursor.execute("SELECT * FROM provincias")
 resultado = cursor.fetchall()
 print(resultado)
+
+cursor.execute("""
+SELECT * FROM informacion_provincia
+""")
+print(cursor.fetchall())

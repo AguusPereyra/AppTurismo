@@ -110,9 +110,43 @@ function renderProvincia(provincia, datos){
                 >
 
                     ${esFavorita ? "⭐" : "☆"}
-
                 </button>
-                <h2>PROVINCIA TEST</h2>
+
+                <h2>${provincia.id}</h2>
+
+                <div class="card-info">
+
+                    <p>
+                        ${datos.informacion[0]}
+                    </p>
+
+                    <p>
+                        🏛 <strong>Capital:</strong>
+                        ${datos.informacion[1]}
+                    </p>
+
+                    <p>
+                        👥 <strong>Población:</strong>
+                        ${datos.informacion[2]}
+                    </p>
+
+                    <p>
+                        📏 <strong>Superficie:</strong>
+                        ${datos.informacion[3]}
+                    </p>
+
+                    <p>
+                        🌎 <strong>Región:</strong>
+                        ${datos.informacion[4]}
+                    </p>
+
+                    <p>
+                        💡 <strong>Dato curioso:</strong>
+                        ${datos.informacion[5]}
+                    </p>
+
+                </div>
+
                 <div class="accordion">
                     <button class="accordion-btn">
                         🎵 Eventos
