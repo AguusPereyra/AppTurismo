@@ -198,8 +198,6 @@ MAPA SVG
                 drop-shadow(
                     0 0 10px rgba(59,130,246,0.7)
                 );
-            transform:scale(1.015);
-            transform-origin:center;
             stroke:#93c5fd;
             stroke-width:2;
         }
@@ -231,6 +229,8 @@ INFO PROVINCIA
 ========== */
 
         #info-provincia{
+            display:none;
+
             margin-top:30px;
             background:
                 linear-gradient(
@@ -244,26 +244,44 @@ INFO PROVINCIA
             min-height:500px;
             text-align:left;
             font-size:18px;
+
             box-shadow:
                 0 10px 40px rgba(0,0,0,0.35),
                 0 0 20px rgba(59,130,246,0.08);
             transition:0.3s;
+
             border: 1px solid rgba(255,255,255,0.08);
             backdrop-filter:blur(12px);
+
             opacity:1;
+            
             transform:translateY(10px);
             transition:all 0.3s ease;
             max-height:80vh;
             overflow-y:auto;
-            animation: fadeSlide 0.35s ease;
         }
 
-        #info-provincia:hover{
-            transform:translateY(-3px);
+        #info-provincia.modal-abierto{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+
+            display:block;
+            
+            transform: translate(-50%, -50%);
+
+            width: 900px;
+            max-width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            z-index: 1000;
+
+            animation: modalFade 0.25s ease;
         }
 
         #info-provincia h2{
-            margin-top:0;
+            text-align:center;
+            margin-bottom:20px;
             color:#3b82f6;
             font-size:30px;
         }
@@ -277,6 +295,15 @@ INFO PROVINCIA
             text-align: center;
             color: white;
             padding: 40px 20px;
+        }
+
+        .provincia-img{
+            width:100%;
+            height:250px;
+            object-fit:cover;
+            border-radius:15px;
+            margin-bottom:20px;
+            box-shadow:0 8px 20px rgba(0,0,0,0.3);
         }
 
         .mensaje-inicial h2{
@@ -512,9 +539,7 @@ LOADERS
             display: none;
         }
 
-        .fade-in{
-            animation: aparecer 0.4s ease;
-        }
+        
 
         .spinner{
             width: 40px;
@@ -578,16 +603,25 @@ FAVORITOS
 ========== */
 
         .favorito-btn{
-            background: transparent;
-            border: none;
-            font-size: 28px;
-            cursor: pointer;
-            transition: 0.3s;
-            color: #FFD700;
+            position:absolute;
+
+            top:20px;
+
+            right:20px;
+
+            background:none;
+
+            border:none;
+
+            font-size:28px;
+
+            cursor:pointer;
+
+            transition:0.2s;
         }
 
         .favorito-btn:hover{
-            transform: scale(1.2);
+            transform:scale(1.1);
         }
 
         #favoritos-container{
@@ -607,6 +641,36 @@ FAVORITOS
             font-size: 14px;
             font-weight: 600;
             backdrop-filter: blur(10px);
+        }
+
+ /* ==========
+BTN
+========== */        
+
+        #btn-volver{
+            position:absolute;
+
+            top:20px;
+
+            left:20px;
+
+            background:none;
+
+            border:none;
+
+            color:white;
+
+            font-size:30px;
+
+            cursor:pointer;
+
+            transition:0.2s ease;
+        }
+
+        #btn-volver:hover{
+            color:#60a5fa;
+
+            transform:translateX(-4px);
         }
 
  /* ==========
@@ -658,6 +722,20 @@ ANIMACIONES
                     scale(1);
             }
         }
+
+        @keyframes modalFade{
+            from{
+                opacity:0;
+                transform:
+                    translate(-50%, -48%);
+            }
+
+            to{
+                opacity:1;
+                transform:
+                    translate(-50%, -50%);
+            }
+        }
     
 /* ==========
 TOAST
@@ -701,6 +779,33 @@ TOAST
         .loader-container p{
             color:#d1d5db;
             font-size:16px;
+        }
+
+/* ==========
+OVERLAY
+========== */         
+
+        #overlay{
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0,0,0,0.55);
+
+            backdrop-filter: blur(6px);
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition: 0.3s;
+
+            z-index: 999;
+        }
+
+        #overlay.active{
+            opacity: 1;
+
+            pointer-events: auto;
         }
 
         

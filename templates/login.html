@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>
+
+        Login - App Turismo
+
+    </title>
+
+    <style>
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background-color: #0f172a;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            height: 100vh;
+
+        }
+
+        .login-container {
+
+            background-color: #1e293b;
+
+            padding: 40px;
+
+            border-radius: 20px;
+
+            width: 400px;
+
+            box-shadow:
+                0 10px 25px rgba(
+                    0,
+                    0,
+                    0,
+                    0.3
+                );
+
+            text-align: center;
+
+        }
+
+        h1 {
+
+            color: #f8fafc;
+
+            margin-bottom: 10px;
+
+        }
+
+        .subtitulo {
+
+            color: #94a3b8;
+
+            margin-bottom: 30px;
+
+        }
+
+        input {
+
+            width: 100%;
+
+            box-sizing: border-box;
+
+            padding: 14px;
+
+            margin-bottom: 20px;
+
+            border: 1px solid #334155;
+
+            border-radius: 10px;
+
+            background-color: #0f172a;
+
+            color: #f8fafc;
+
+            font-size: 15px;
+
+        }
+
+        input:focus {
+
+            outline: none;
+
+            border-color: #3b82f6;
+
+        }
+
+        button {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background-color: #3b82f6;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+        button:hover {
+
+            background-color: #2563eb;
+
+        }
+
+        .error {
+
+            color: #f87171;
+
+            margin-bottom: 20px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <h1>
+
+            🌎 App Turismo
+
+        </h1>
+
+        <p class="subtitulo">
+
+            Panel Administrador
+
+        </p>
+
+        {% if error %}
+
+            <p class="error">
+
+                {{ error }}
+
+            </p>
+
+        {% endif %}
+
+        <form method="POST">
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+            >
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Contraseña"
+                required
+            >
+
+            <button type="submit">
+
+                Ingresar
+
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

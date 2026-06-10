@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>
+        Editar Provincia
+    </title>
+
+</head>
+
+<body>
+    <h1>
+        Editar {{ provincia[1] }}
+    </h1>    
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <label>
+            Imagen actual
+        </label>
+
+        <br>
+
+        <img
+            src="{{ url_for('static', filename='img/provincias/' + provincia[2]) }}"
+            width="250"
+        >
+
+        <br><br>
+
+        <label>
+            Cambiar imagen
+        </label>
+
+        <br>
+
+        <input type="file" name="imagen" accept="image/*">
+
+        <br><br>
+
+        <label>
+            Descripción
+        </label>
+
+        <br>
+
+        <textarea name="descripcion" rows="5" cols="60">{{ provincia[3] }}</textarea>
+
+        <br><br>
+
+        <label>
+            Capital
+        </label>
+
+        <br>
+
+        <input type="text" name="capital" value="{{ provincia[4] }}">
+
+        <br><br>
+
+        <label>
+            Población
+        </label>
+
+        <br>
+
+        <input type="text" name="poblacion" value="{{ provincia[5] }}">
+
+        <br><br>
+
+        <label>
+            Superficie
+        </label>
+
+        <br>
+
+        <input type="text" name="superficie" value="{{ provincia[6] }}">
+
+        <br><br>
+
+        <label>
+            Región
+        </label>
+
+        <br>
+
+        <input type="text" name="region" value="{{ provincia[7] }}">
+
+        <br><br>
+
+        <label>
+            Dato curioso
+        </label>
+
+        <br>
+
+        <textarea name="dato_curioso" rows="4" cols="60">{{ provincia[8] }}</textarea>
+
+        <br><br>
+
+        
+
+        <button type="submit">
+            Guardar cambios
+        </button>
+    </form>
+
+    <br>
+
+    <a href="{{ url_for('auth.admin_provincias') }}">
+        Volver
+    </a>
+
+</body>
+
+</html>

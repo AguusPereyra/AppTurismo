@@ -1,5 +1,7 @@
 const info = document.getElementById("info-provincia");
 
+const overlay = document.getElementById("overlay");
+
 const imagenProvincia = document.getElementById("imagen-provincia");
 
 const buscador = document.getElementById("buscador");
@@ -36,23 +38,7 @@ function actualizarFavoritosMapa(){
     });
 }
 
-function renderFavoritos(){
 
-    favoritosContainer.innerHTML = "";
-
-    favoritos.forEach((favorito) => {
-
-        favoritosContainer.innerHTML += `
-
-            <div class="favorito-chip">
-
-                ⭐ ${favorito}
-
-            </div>
-
-        `;
-    });
-}
 
 const provincias = document.querySelectorAll(".mapa path");
 
@@ -104,15 +90,17 @@ function renderProvincia(provincia, datos){
     );
     let contenido = `
 
-                <button
-                    class="favorito-btn"
-                    onclick="toggleFavorito(&quot;${provincia.id}&quot;)"
+                <button id="btn-volver">
+                    ⟵ 
+                </button>
+                
+
+                <img
+                    src="/static/img/provincias/${datos.imagen}"
+                    class="provincia-img"
                 >
 
-                    ${esFavorita ? "⭐" : "☆"}
-                </button>
-
-                <h2>${provincia.id}</h2>
+                <h2>${datos.nombre}</h2>
 
                 <div class="card-info">
 
@@ -229,16 +217,22 @@ function renderProvincia(provincia, datos){
 
                     </div>
                 </div>
-            `;
-            info.innerHTML = contenido;
+            `;            
 
-            info.style.animation = "none";
-
-            void info.offsetWidth;
-
-            info.style.animation =
-                "fadeSlide 0.35s ease";
+            info.innerHTML = contenido; 
             
+            const btnVolver =
+                document.getElementById("btn-volver");
+
+            btnVolver.addEventListener("click", () => {
+
+                overlay.classList.remove("active");
+
+                info.classList.remove("modal-abierto");
+
+                info.innerHTML = "";
+            });
+
             activarAccordion();
 }
 
@@ -269,30 +263,25 @@ provincias.forEach((provincia) => {
 
         provinciaSeleccionada = provincia.id;
 
+        overlay.classList.add("active");
+        info.classList.add("modal-abierto");
+
         mostrarLoader();
 
         try{
                 loader.classList.remove("hidden");
 
                 const respuesta = await fetch(`/api/provincia/${provincia.id}`);
-
                 const datos = await respuesta.json();
 
-                info.classList.remove("fade-in");
                 renderProvincia(provincia, datos);
-
-                setTimeout(() => {
-                    info.classList.add("fade-in");
-                }, 10);
-
-                info.scrollIntoView({
-                    behavior: "smooth"
-                });
 
                 loader.classList.add("hidden");
             }
 
         catch(error){
+
+            console.error("ERROR:", error);
 
             info.innerHTML = `
                 <div class="error-box">

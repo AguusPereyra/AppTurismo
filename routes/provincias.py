@@ -1,10 +1,11 @@
 from flask import render_template, jsonify, Blueprint
 from database.db import conexion, cursor
-from models.provincias_model import (
+from models.provincias_models import (
     obtener_provincia_por_nombre,
     obtener_eventos_por_provincia,
     obtener_gastronomia_por_provincia,
     obtener_turismo_por_provincia,
+    actualizar_imagen_provincia,
     obtener_info_provincia
 )
 
@@ -46,6 +47,7 @@ def obtener_provincia(nombre):
 
             return jsonify({
                 "nombre": provincia[1],
+                "imagen": provincia[2],
                 "informacion": informacion,
                 "eventos": eventos,
                 "gastronomia": gastronomia,
@@ -81,5 +83,5 @@ def status():
     return jsonify({
         "status": "ok"
     })
-
 print("RUTAS CARGADAS")
+
